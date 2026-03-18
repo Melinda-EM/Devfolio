@@ -6,6 +6,7 @@ import { FileText, Briefcase, Cpu, Mail, Calculator, Route } from "lucide-react"
 import Calculatory from "./calculatory"
 import { career } from "../data/career"
 import CareerSlider from "./careerSlider";
+import { projects } from "../data/project"
 
 interface RetroDesktopProps {
   onOpenWindow: (id: string, title: string, content: React.ReactNode) => void
@@ -15,8 +16,8 @@ export default function RetroDesktop({ onOpenWindow }: RetroDesktopProps) {
   const desktopIcons = [
     {
       id: "about",
-      name: "A propos",
-      icon: <FileText size={36} className="[image-rendering:pixelated]" />,
+      name: "A propos.exe",
+      icon: <FileText size={40} className="[image-rendering:pixelated]" />,
       content: (
         <div className="p-4 h-full overflow-auto">
           <h2 className="text-2xl text-[#87CEFA] mb-4 font-bold">A propos de moi</h2>
@@ -50,24 +51,72 @@ export default function RetroDesktop({ onOpenWindow }: RetroDesktopProps) {
     },
     {
       id: "projects",
-      name: "Projets",
-      icon: <Briefcase size={36} />,
+      name: "Projets.exe",
+      icon: <Briefcase size={40} />,
       content: (
         <div className="p-4 h-full overflow-auto">
           <h2 className="text-xl text-[#87CEFA] mb-4 font-bold">Mes Projets</h2>
-          {[1, 2, 3, 4].map((item) => (
-            <div key={item} className="mb-4 border-2 border-[#8A2BE2] p-3 bg-[#1a0033]">
-              <h3 className="text-[#D8BFD8] font-bold">Retro Project {item}</h3>
-              <p className="text-sm mb-2 text-[#87CEFA]">
-                A nostalgic web application built with modern technologies but classic aesthetics.
+          {projects.map((project) => (
+            <div key={project.id} className="mb-4 border-2 border-[#8A2BE2] p-3 bg-[#1a0033]">
+              
+              <h3 className="text-[#D8BFD8] font-bold">{project.title}</h3>
+
+              <p className="text-sm text-[#87CEFA] mb-2">
+                {project.description}
               </p>
+
+              <p className="text-xs text-[#D8BFD8] mb-3 italic">
+                {project.longDescription}
+              </p>
+              <div className="flex gap-1 flex-wrap mb-2">
+                {project.tech.map((t) => (
+                  <span key={t} className="text-xs bg-[#8A2BE2] px-2 py-1 border border-white">
+                    {t}
+                  </span>
+                ))}
+              </div>
+
+              <div className="text-xs text-[#87CEFA] mb-2">
+                👥 {project.teamSize} personne{project.teamSize > 1 && "s"}{" "}
+                
+                {project.team && (
+                  <span>
+                    (
+                    {project.team.map((member, index) => (
+                      <span key={index}>
+                        {member.count} {member.role}
+                        {index < project.team.length - 1 && " / "}
+                      </span>
+                    ))}
+                    )
+                  </span>
+                )}
+                {" "}⏱️ {project.duration}
+              </div>
+
+                {project.image && (
+                  <div className="mb-3">
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      width={500}
+                      height={300}
+                      className="border-2 border-[#8A2BE2] object-cover w-full h-auto"
+                    />
+                  </div>
+                )}
               <div className="flex gap-2">
-                <button className="px-3 py-1 bg-[#8A2BE2] text-white text-xs hover:bg-[#6A1CB2] border-2 border-[#D8BFD8]">
-                  VIEW
-                </button>
-                <button className="px-3 py-1 bg-[#0000FF] text-white text-xs hover:bg-[#0000CC] border-2 border-[#D8BFD8]">
-                  CODE
-                </button>
+                <a href={project.view} target="_blank">
+                  <button className="px-4 py-2 bg-[#8A2BE2] text-white text-sm">
+                    VIEW
+                  </button>
+                </a>
+
+                <a href={project.code} target="_blank">
+                  <button className="px-4 py-2 bg-[#0000FF] text-white text-sm">
+                    CODE
+                  </button>
+                </a>
               </div>
             </div>
           ))}
@@ -76,14 +125,14 @@ export default function RetroDesktop({ onOpenWindow }: RetroDesktopProps) {
     },
     {
       id: "career",
-      name: "Parcours",
-      icon: <Route size={36} />,
+      name: "Parcours.exe",
+      icon: <Route size={40} />,
       content: <CareerSlider career={career} />,
     },
     {
       id: "skills",
-      name: "Compétences",
-      icon: <Cpu size={36} />,
+      name: "Compétences.exe",
+      icon: <Cpu size={40} />,
       content: (
        <div className="p-4 h-full overflow-auto">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 p-2">
@@ -160,8 +209,8 @@ export default function RetroDesktop({ onOpenWindow }: RetroDesktopProps) {
     },
     {
       id: "contact",
-      name: "Contact",
-      icon: <Mail size={36} />,
+      name: "Contact.exe",
+      icon: <Mail size={40} />,
       content: (
        <div className="p-4 h-full overflow-auto">
           <h2 className="text-2xl font-orange text-[#87CEFA] mb-4 font-bold">
@@ -241,8 +290,8 @@ export default function RetroDesktop({ onOpenWindow }: RetroDesktopProps) {
     },
     {
       id: "calculator",
-      name: "Calculatrice",
-      icon: <Calculator size={36} />,
+      name: "Calculatrice.exe",
+      icon: <Calculator size={40} />,
       content: (
         <div className="p-4 h-full">
           <Calculatory />
@@ -253,23 +302,23 @@ export default function RetroDesktop({ onOpenWindow }: RetroDesktopProps) {
 
   return (
     <div className="h-[calc(120vh-60px)] w-full p-4">
-      <div className="grid grid-cols-6 gap-4 h-full">
-        {desktopIcons.map((icon, index) => (
+      <div className="grid grid-cols-3 lg:grid-cols-6 lg:gap-4 gap-2 lg:h-full">
+        {desktopIcons.map((icon) => (
           <div
               key={icon.id}
-              className="flex flex-col items-center gap-2 cursor-pointer p-2 rounded"
+              className="flex flex-col lg:items-center gap-2 cursor-pointer p-2 rounded"
               onDoubleClick={() => onOpenWindow(icon.id, icon.name, icon.content)}
             >
-              <div className="relative h-20 w-20">
+              <div className="relative h-14 w-14 lg:h-20 lg:w-20">
  
                 <div className="absolute -top-0.5 left-0 w-9 h-9 bg-[#D8BFD8] border-2 border-[#8A2BE2] rounded-t"></div>
 
-                <div className="absolute top-2 left-0 w-22 h-16 bg-[#D8BFD8] border-2 border-[#8A2BE2] rounded-sm flex items-center justify-center hover:bg-[#C8AFD8] transition-colors">
+                <div className="absolute top-2 left-0 w-24 h-18 lg:w-26 lg:h-18 bg-[#D8BFD8] border-2 border-[#8A2BE2] rounded-sm flex items-center justify-center hover:bg-[#C8AFD8] transition-colors">
                   <div className="text-[#8A2BE2]">{icon.icon}</div>
                 </div>
               </div>
 
-              <span className="text-[#ffffff] text-lg font-bold text-center drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)]">
+              <span className="text-[#ffffff] text-sm lg:text-lg mt-4 lg:mt-0 font-bold lg:text-center drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)]">
                 {icon.name}
               </span>
             </div>

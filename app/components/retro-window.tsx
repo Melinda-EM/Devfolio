@@ -18,7 +18,6 @@ interface RetroWindowProps {
 }
 
 export default function RetroWindow({
-  id,
   title,
   children,
   position,
