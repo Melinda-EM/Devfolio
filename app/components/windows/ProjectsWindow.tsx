@@ -55,17 +55,29 @@ export default function ProjectsWindow() {
                   </div>
                 )}
               <div className="flex gap-2">
-                <a href={project.view} target="_blank">
-                  <button className="px-4 py-2 bg-[#8A2BE2] text-white text-sm">
-                    VIEW
-                  </button>
-                </a>
+                {project.view && (
+                  <a
+                    href={project.view}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <button className="px-4 py-2 bg-[#8A2BE2] text-white text-sm">
+                      VIEW
+                    </button>
+                  </a>
+                )}
 
-                <a href={project.code} target="_blank">
-                  <button className="px-4 py-2 bg-[#0000FF] text-white text-sm">
-                    CODE
-                  </button>
-                </a>
+                {project.code && (
+                  <a
+                    href={project.code}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <button className="px-4 py-2 bg-[#0000FF] text-white text-sm">
+                      CODE
+                    </button>
+                  </a>
+                )}
               </div>
             </div>
           ))}

@@ -16,8 +16,8 @@ export const projects = [
         ],
     duration: "1 mois",
     // image: "/img/projects/portfolio.png",
-    view: "https://...",
-    code: "https://github.com/...",
+    // view: "https://...",
+    // code: "https://github.com/...",
   },
   {
     id: 2,
@@ -33,7 +33,7 @@ export const projects = [
         { role: "Backend", count: 2 }
         ],
     duration: "2 mois",
-    image: "/img/projects/portfolio.png",
+    // image: "/img/projects/portfolio.png",
     // view: "https://www.rezotop.com/",
   },
   {
