@@ -18,7 +18,6 @@ interface RetroWindowProps {
 }
 
 export default function RetroWindow({
-  id,
   title,
   children,
   position,
@@ -116,7 +115,7 @@ export default function RetroWindow({
         </div>
       </div>
 
-      <div className="flex-1 overflow-hidden bg-[#1a0033] text-white">{children}</div>
+      <div className="flex-1 overflow-auto bg-[#1a0033] text-white">{children}</div>
 
     </div>
   )
