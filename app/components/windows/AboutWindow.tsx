@@ -32,11 +32,7 @@ export default function AboutWindow() {
                     </h4>
         
                     <p>
-<<<<<<< HEAD
                     Développeuse Web diplômée de la Web@cadémie by Epitech, je poursuis aujourd&apos;hui mon parcours en tant qu&apos;Accompagnatrice Pédagogique afin de transmettre mes connaissances et accompagner les futurs développeurs.
-=======
-                    Développeuse Web diplômée de la Web@cadémie by Epitech, je poursuis aujourd'hui mon parcours en tant qu'Accompagnatrice Pédagogique afin de transmettre mes connaissances et accompagner les futurs développeurs.
->>>>>>> 8a76f25c3bdba9c139dcc7032e0d50a35aa48fa4
                     </p>
                     </section>
         
@@ -46,29 +42,17 @@ export default function AboutWindow() {
                     </h4>
         
                     <p>
-<<<<<<< HEAD
                     Après plusieurs années dans l&apos;hôtellerie, j&apos;ai choisi une reconversion vers le développement web. Cette décision est née de ma curiosité pour les nouvelles technologies, de mon goût pour la résolution de problèmes et de mon envie de créer des applications utiles.
-=======
-                    Après plusieurs années dans l'hôtellerie, j'ai choisi une reconversion vers le développement web. Cette décision est née de ma curiosité pour les nouvelles technologies, de mon goût pour la résolution de problèmes et de mon envie de créer des applications utiles.
->>>>>>> 8a76f25c3bdba9c139dcc7032e0d50a35aa48fa4
                     </p>
                     </section>
         
                     <section>
                     <h4 className="text-[#87CEFA] font-bold text-xl mb-2">
-<<<<<<< HEAD
                     💜 Ce qui m&apos;anime
                     </h4>
         
                     <p>
                     J&apos;aime transformer une idée en une interface moderne, intuitive et agréable à utiliser. Chaque projet est pour moi une opportunité d&apos;apprendre, de relever de nouveaux défis et de progresser techniquement.
-=======
-                    💜 Ce qui m'anime
-                    </h4>
-        
-                    <p>
-                    J'aime transformer une idée en une interface moderne, intuitive et agréable à utiliser. Chaque projet est pour moi une opportunité d'apprendre, de relever de nouveaux défis et de progresser techniquement.
->>>>>>> 8a76f25c3bdba9c139dcc7032e0d50a35aa48fa4
                     </p>
                     </section>
         
