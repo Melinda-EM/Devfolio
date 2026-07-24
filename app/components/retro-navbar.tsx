@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { Monitor, Menu, X } from "lucide-react"
-import { cn } from "./lib/utils"
+import { cn } from "../lib/utils"
 
 export default function RetroNavbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)

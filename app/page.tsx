@@ -35,6 +35,8 @@ export default function Home() {
   const openWindow = (id: string, title: string, content: React.ReactNode) => {
     setWindows((prev) => {
       const existingWindow = prev.find((w) => w.id === id)
+      const isMobile = window.innerWidth < 1024;
+
       if (existingWindow) {
         return prev.map((w) => (w.id === id ? { ...w, isMinimized: false, zIndex: nextZIndex } : w))
       } else {
@@ -43,8 +45,19 @@ export default function Home() {
           title,
           isOpen: true,
           isMinimized: false,
-          position: { x: 50 + prev.length * 30, y: 50 + prev.length * 30 },
-          size: { width: 900, height: 450 },
+          position: isMobile
+            ? { x: 10, y: 10 }
+            : { x: 50 + prev.length * 30, y: 50 + prev.length * 30 },
+
+          size: isMobile
+            ? {
+                width: window.innerWidth - 20,
+                height: window.innerHeight - 70,
+              }
+            : {
+                width: 900,
+                height: 450,
+              },
           zIndex: nextZIndex,
           content,
         }
