@@ -15,6 +15,7 @@ interface RetroDesktopProps {
 }
 
 export default function RetroDesktop({ onOpenWindow }: RetroDesktopProps) {
+
     const desktopIcons = [
     {
         id: "about",
@@ -61,8 +62,9 @@ export default function RetroDesktop({ onOpenWindow }: RetroDesktopProps) {
           <div
               key={icon.id}
               className="flex flex-col lg:items-center gap-2 cursor-pointer p-2 rounded"
-              onDoubleClick={() => onOpenWindow(icon.id, icon.name, icon.content)}
+              onClick={() => onOpenWindow(icon.id, icon.name, icon.content)}
             >
+
               <div className="relative h-14 w-14 lg:h-20 lg:w-20">
  
                 <div className="absolute -top-0.5 left-0 w-9 h-9 bg-[#D8BFD8] border-2 border-[#8A2BE2] rounded-t"></div>
