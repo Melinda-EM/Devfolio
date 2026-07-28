@@ -1,6 +1,7 @@
 import connect from '../../public/img/connect_four.png'
+import { Project } from "../types/project";
 
-export const projects = [
+export const projects: Project[] = [
   {
     id: 1,
     title: "Pictioble.io",
