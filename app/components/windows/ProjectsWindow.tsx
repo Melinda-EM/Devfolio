@@ -34,7 +34,7 @@ export default function ProjectsWindow() {
                     {project.team.map((member, index) => (
                       <span key={index}>
                         {member.count} {member.role}
-                        {index < project.team.length - 1 && " / "}
+                        {index < (project.team?.length ?? 0) - 1 ? ", " : ""}
                       </span>
                     ))}
                     )

@@ -1,4 +1,5 @@
 import connect from '../../public/img/connect_four.png'
+import portfolio from '../../public/img/portfolio.png'
 import { Project } from "../types/project";
 
 export const projects: Project[] = [
@@ -18,7 +19,7 @@ export const projects: Project[] = [
     duration: "1 mois",
     // image: "/img/projects/portfolio.png",
     // view: "https://...",
-    // code: "https://github.com/...",
+    code: "https://github.com/Melinda-EM/Pictioble.io",
   },
   {
     id: 2,
@@ -53,6 +54,7 @@ export const projects: Project[] = [
     duration: "2 semaines",
     image: connect,
     view: "https://me-connect-four.netlify.app/",
+    code: "https://github.com/Melinda-EM/ConnectFour",
   },
   {
     id: 4,
@@ -70,5 +72,24 @@ export const projects: Project[] = [
     duration: "🚧 En cours de conception 🚧",
     // image: connect,
     // view: "https://me-connect-four.netlify.app/",
+    // code: "https://github.com/Melinda-EM/Seculendar",
+  },
+  {
+    id: 5,
+    title: "Portfolio Bene Designer",
+    description: "Portfolio d'une graphiste",
+    longDescription: "Une graphiste qui avait besoin de montrer ses créations et un système de réservation de créneaux avec Calendly. Projet réalisé en suivant ses maquettes.",
+    
+    tech: ["React", "Tailwind"],
+    
+    teamSize: 2,
+    // team: [
+    //     { role: "Frontend", count: 1 },
+    //     { role: "Backend", count: 2 }
+    //     ],
+    duration: "🚧 En cours de conception 🚧",
+    image: portfolio,
+    view: "https://bene-designer.com/",
+    code: "https://github.com/yeezynico/portfolio_b-n-dcite",
   },
 ]
