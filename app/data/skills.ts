@@ -36,7 +36,7 @@ export const skills = [
     skills: [
       { name: "MySQL", icon: "🐳" },
       { name: "Postgre", icon: "🐧" },
-      { name: "MongoDB", icon: "🐱" },
+      { name: "MongoDB", icon: "🍃" },
     ]
   },
 
@@ -48,11 +48,12 @@ export const skills = [
       { name: "Docker", icon: "🐳" },
       { name: "Linux", icon: "🐧" },
       { name: "GitHub", icon: "🐱" },
-      { name: "Figma", icon: "🐱" },
-      { name: "Canva", icon: "🐱" },
-      { name: "Visual Studio Code", icon: "🐱" },
-      { name: "Insomnia", icon: "🐱" },
-      { name: "Google Chrome", icon: "🐱" },
+      { name: "Figma", icon: "🖌️" },
+      { name: "Canva", icon: "🖼️" },
+      { name: "Visual Studio Code", icon: "📁" },
+      { name: "Insomnia", icon: "🌃" },
+      { name: "Google Chrome", icon: "🌐" },
+      { name: "Windows", icon: "🖱️" },
     ]
   },
 
@@ -63,13 +64,13 @@ export const skills = [
     skills: [
       { name: "Leadership", icon: "👑" },
       { name: "Créativité", icon: "🎨" },
-      { name: "Travail d'équipe", icon: "🤝" },
-      { name: "Autonomie", icon: "🤝" },
-      { name: "Initiative", icon: "🤝" },
-      { name: "Pédagogue", icon: "🤝" },
-      { name: "Cuuriosité", icon: "🤝" },
-      { name: "Résolution", icon: "🤝" },
-      { name: "Adaptabilité", icon: "🤝" },
+      { name: "Travail d'équipe", icon: "🧑‍🧑‍🧒‍🧒" },
+      { name: "Autonomie", icon: "🤖" },
+      { name: "Initiative", icon: "🎯" },
+      { name: "Pédagogue", icon: "👩🏼‍🏫" },
+      { name: "Curiosité", icon: "🤔" },
+      { name: "Résolution", icon: "🕵🏼‍♀️" },
+      { name: "Adaptabilité", icon: "🔄" },
     ]
   }
 ];
