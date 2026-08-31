@@ -15,42 +15,42 @@ export interface Slide {
 
 export const career: Slide[] = [
   {
-    period: "2016",
+    period: "2015 - 2016",
     image: art,
     title: "Bac STD2A",
     description:
       "Études de lycée en Arts Appliqués orientées vers les différents domaines du design et de la création.",
   },
   {
-    period: "2016 - 2017",
+    period: "2019 - 2020",
     image: ecole,
     title: "Formation Réceptionniste",
     description:
       "Formation professionnelle en gestion de l'accueil, relation client et organisation administrative.",
   },
   {
-    period: "2017 - 2020",
+    period: "2019 - 2022",
     image: reception,
     title: "Réceptionniste",
     description:
       "Réceptionniste durant 3 ans chez Séjours & Affaires à Vitry-sur-Seine.",
   },
   {
-    period: "2023 - 2025",
+    period: "2022 - 2024",
     image: webac,
     title: "Web@cadémie",
     description:
       "Formation Développeur Intégrateur Web à la Web@cadémie by Epitech.",
   },
   {
-    period: "2025 - Aujourd'hui",
+    period: "2023 - 2024",
     image: reflectiv,
     title: "Alternante Développeuse Web",
     description:
       "Alternance chez Reflectiv Windows Films à Bonneuil-sur-Marne.",
   },
   {
-    period: "2026 - Aujourd'hui",
+    period: "2024 - Aujourd'hui",
     image: epitech,
     title: "Accompagnatrice pédagogique",
     description:
