@@ -1,5 +1,6 @@
 "use client"
 
+import type React from "react"
 import { useState } from "react"
 import emailjs from "@emailjs/browser"
 
@@ -35,7 +36,6 @@ export default function ContactWindow() {
     const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID
     const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
 
-
     if (!serviceId || !templateId || !publicKey) {
       console.error("Variables EmailJS manquantes")
 
@@ -48,8 +48,7 @@ export default function ContactWindow() {
     }
 
     try {
-
-      const result = await emailjs.send(
+      await emailjs.send(
         serviceId,
         templateId,
         {
@@ -107,11 +106,9 @@ export default function ContactWindow() {
         </p>
       </div>
 
-
+ 
       <div className="border-2 border-[#8A2BE2] bg-[#1a0033] px-3 py-2 mb-6 text-xs">
-        <span className="text-[#87CEFA]">
-          ●
-        </span>{" "}
+        <span className="text-[#87CEFA]">●</span>{" "}
         <span className="text-[#D8BFD8]">
           Connexion disponible — vous pouvez m'écrire
         </span>
@@ -122,7 +119,6 @@ export default function ContactWindow() {
         onSubmit={sendEmail}
         className="space-y-5 font-mono text-sm"
       >
-
 
         <div>
           <label
@@ -135,7 +131,6 @@ export default function ContactWindow() {
           <p className="text-xs text-[#D8BFD8] mb-2">
             Comment puis-je vous appeler ?
           </p>
-        </div>
 
           <input
             id="name"
@@ -145,7 +140,17 @@ export default function ContactWindow() {
             onChange={handleChange}
             placeholder="John Doe"
             required
-            className="w-full p-2 bg-[#2a0044] border-2 border-[#8A2BE2] text-white placeholder:text-[#777] focus:border-[#87CEFA] outline-none"
+            className="
+              w-full
+              p-2
+              bg-[#2a0044]
+              border-2
+              border-[#8A2BE2]
+              text-white
+              placeholder:text-[#777]
+              focus:border-[#87CEFA]
+              outline-none
+            "
           />
         </div>
 
@@ -170,7 +175,17 @@ export default function ContactWindow() {
             onChange={handleChange}
             placeholder="john.doe@mail.fr"
             required
-            className="w-full p-2 bg-[#2a0044] border-2 border-[#8A2BE2] text-white placeholder:text-[#777] focus:border-[#87CEFA] outline-none"
+            className="
+              w-full
+              p-2
+              bg-[#2a0044]
+              border-2
+              border-[#8A2BE2]
+              text-white
+              placeholder:text-[#777]
+              focus:border-[#87CEFA]
+              outline-none
+            "
           />
         </div>
 
@@ -186,11 +201,9 @@ export default function ContactWindow() {
           <p className="text-xs text-[#D8BFD8] mb-2">
             Optionnel — si vous préférez être rappelé(e).
           </p>
-        </div>
 
-        <div>
           <label className="block text-[#D8BFD8] mb-1">
-            Numéro:
+            Numéro :
           </label>
 
           <input
@@ -201,7 +214,17 @@ export default function ContactWindow() {
             onChange={handleChange}
             placeholder="0606060606"
             pattern="[0-9]{10}"
-            className="w-full p-2 bg-[#2a0044] border-2 border-[#8A2BE2] text-white placeholder:text-[#777] focus:border-[#87CEFA] outline-none"
+            className="
+              w-full
+              p-2
+              bg-[#2a0044]
+              border-2
+              border-[#8A2BE2]
+              text-white
+              placeholder:text-[#777]
+              focus:border-[#87CEFA]
+              outline-none
+            "
           />
         </div>
 
@@ -226,7 +249,18 @@ export default function ContactWindow() {
             rows={5}
             placeholder="Bonjour, je vous contacte au sujet de..."
             required
-            className="w-full p-2 bg-[#2a0044] border-2 border-[#8A2BE2] text-white placeholder:text-[#777] focus:border-[#87CEFA] outline-none resize-none"
+            className="
+              w-full
+              p-2
+              bg-[#2a0044]
+              border-2
+              border-[#8A2BE2]
+              text-white
+              placeholder:text-[#777]
+              focus:border-[#87CEFA]
+              outline-none
+              resize-none
+            "
           />
         </div>
 
@@ -234,7 +268,18 @@ export default function ContactWindow() {
         <button
           type="submit"
           disabled={sending}
-          className="px-5 py-2 bg-[#8A2BE2] text-white hover:bg-[#6A1CB2] border-2 border-[#D8BFD8] font-bold disabled:opacity-50 disabled:cursor-not-allowed"
+          className="
+            px-5
+            py-2
+            bg-[#8A2BE2]
+            text-white
+            hover:bg-[#6A1CB2]
+            border-2
+            border-[#D8BFD8]
+            font-bold
+            disabled:opacity-50
+            disabled:cursor-not-allowed
+          "
         >
           {sending ? "► ENVOI EN COURS..." : "► ENVOYER"}
         </button>
@@ -257,7 +302,6 @@ export default function ContactWindow() {
 
 
       <div className="mt-8 border-t-2 border-[#8A2BE2] pt-5">
-
         <h3 className="text-[#87CEFA] font-bold mb-2">
           Retrouvez-moi aussi sur :
         </h3>
@@ -267,12 +311,21 @@ export default function ContactWindow() {
         </p>
 
         <div className="space-y-2">
-
           <a
             href="https://www.linkedin.com/in/melinda-e-m/"
             target="_blank"
             rel="noopener noreferrer"
-            className="block p-2 border-2 border-transparent hover:border-[#8A2BE2] hover:bg-[#2a0044] text-[#D8BFD8] hover:text-[#87CEFA] transition-colors"
+            className="
+              block
+              p-2
+              border-2
+              border-transparent
+              hover:border-[#8A2BE2]
+              hover:bg-[#2a0044]
+              text-[#D8BFD8]
+              hover:text-[#87CEFA]
+              transition-colors
+            "
           >
             💼 LinkedIn
             <span className="text-xs text-[#777] ml-3">
@@ -284,20 +337,27 @@ export default function ContactWindow() {
             href="https://github.com/Melinda-EM"
             target="_blank"
             rel="noopener noreferrer"
-            className="block p-2 border-2 border-transparent hover:border-[#8A2BE2] hover:bg-[#2a0044] text-[#D8BFD8] hover:text-[#87CEFA] transition-colors"
+            className="
+              block
+              p-2
+              border-2
+              border-transparent
+              hover:border-[#8A2BE2]
+              hover:bg-[#2a0044]
+              text-[#D8BFD8]
+              hover:text-[#87CEFA]
+              transition-colors
+            "
           >
             👩‍💻 GitHub
             <span className="text-xs text-[#777] ml-3">
               github.com/Melinda-EM
             </span>
           </a>
-
         </div>
       </div>
 
-
       <div className="mt-8 pt-4 border-t border-[#8A2BE2] text-center">
-
         <p className="text-xs text-[#D8BFD8]">
           Connexion établie.
         </p>
@@ -309,9 +369,7 @@ export default function ContactWindow() {
         <p className="text-[#87CEFA] font-bold mt-4">
           Poulpi.exe 🐙
         </p>
-
       </div>
-
     </div>
   )
 }
