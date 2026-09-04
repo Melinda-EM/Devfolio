@@ -135,6 +135,7 @@ export default function ContactWindow() {
           <p className="text-xs text-[#D8BFD8] mb-2">
             Comment puis-je vous appeler ?
           </p>
+        </div>
 
           <input
             id="name"
@@ -185,6 +186,12 @@ export default function ContactWindow() {
           <p className="text-xs text-[#D8BFD8] mb-2">
             Optionnel — si vous préférez être rappelé(e).
           </p>
+        </div>
+
+        <div>
+          <label className="block text-[#D8BFD8] mb-1">
+            Numéro:
+          </label>
 
           <input
             id="phone"

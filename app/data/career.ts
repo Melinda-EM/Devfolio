@@ -56,7 +56,7 @@ export const career: Slide[] = [
     type: "experience",
   },
   {
-    period: "2026 - Aujourd'hui",
+    period: "2024 - Aujourd'hui",
     image: epitech,
     title: "Accompagnatrice pédagogique",
     description:
