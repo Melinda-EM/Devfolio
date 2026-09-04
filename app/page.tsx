@@ -10,21 +10,44 @@ import RetroTaskbar from "./components/retro-taskbar"
 
 import "./globals.css"
 
-export interface WindowState {
+interface WindowState {
   id: string
   title: string
-  isOpen: boolean
-  isMinimized: boolean
-  position: { x: number; y: number }
-  size: { width: number; height: number }
-  zIndex: number
   content: React.ReactNode
+
+  position: {
+    x: number
+    y: number
+  }
+
+  size: {
+    width: number
+    height: number
+  }
+
+  zIndex: number
+
+  isMinimized: boolean
+  isMaximized: boolean
+
+  previousPosition?: {
+    x: number
+    y: number
+  }
+
+  previousSize?: {
+    width: number
+    height: number
+  }
 }
 
 export default function Home() {
   const [booting, setBooting] = useState(true)
+
   const [windows, setWindows] = useState<WindowState[]>([])
+
   const [nextZIndex, setNextZIndex] = useState(1)
+
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -34,52 +57,60 @@ export default function Home() {
     return () => clearTimeout(timer)
   }, [])
 
+
   const openWindow = (
     id: string,
     title: string,
     content: React.ReactNode
   ) => {
+    console.trace("🚨 OPEN WINDOW :", id, title)
     setWindows((prev) => {
       const existingWindow = prev.find((w) => w.id === id)
+
       const isMobile = window.innerWidth < 1024
 
       if (existingWindow) {
         return prev.map((w) =>
           w.id === id
             ? {
-                ...w,
-                isMinimized: false,
-                zIndex: nextZIndex,
-              }
+              ...w,
+              isMinimized: false,
+              zIndex: nextZIndex,
+            }
             : w
         )
       }
 
+
       const newWindow: WindowState = {
         id,
         title,
-        isOpen: true,
-        isMinimized: false,
+        content,
 
         position: isMobile
-          ? { x: 10, y: 10 }
+          ? {
+            x: 10,
+            y: 10,
+          }
           : {
-              x: 50 + prev.length * 30,
-              y: 50 + prev.length * 30,
-            },
+            x: 50 + prev.length * 30,
+            y: 50 + prev.length * 30,
+          },
 
         size: isMobile
           ? {
-              width: window.innerWidth - 20,
-              height: window.innerHeight - 70,
-            }
+            width: window.innerWidth - 20,
+            height: window.innerHeight - 70,
+          }
           : {
-              width: 900,
-              height: 450,
-            },
+            width: 900,
+            height: 450,
+          },
 
         zIndex: nextZIndex,
-        content,
+
+        isMinimized: false,
+        isMaximized: false,
       }
 
       return [...prev, newWindow]
@@ -88,51 +119,89 @@ export default function Home() {
     setNextZIndex((prev) => prev + 1)
   }
 
+
   const closeWindow = (id: string) => {
     setWindows((prev) =>
       prev.filter((w) => w.id !== id)
     )
   }
 
+
   const minimizeWindow = (id: string) => {
     setWindows((prev) =>
       prev.map((w) =>
         w.id === id
-          ? { ...w, isMinimized: true }
+          ? {
+            ...w,
+            isMinimized: true,
+          }
           : w
       )
     )
   }
 
+
   const maximizeWindow = (id: string) => {
     setWindows((prev) =>
-      prev.map((w) =>
-        w.id === id
-          ? {
-              ...w,
-              position: { x: 0, y: 0 },
-              size: {
-                width: window.innerWidth,
-                height: window.innerHeight - 40,
-              },
-              zIndex: nextZIndex,
-            }
-          : w
-      )
+      prev.map((w) => {
+        if (w.id !== id) {
+          return w
+        }
+
+
+        if (w.isMaximized) {
+          return {
+            ...w,
+
+            position:
+              w.previousPosition ?? w.position,
+
+            size:
+              w.previousSize ?? w.size,
+
+            isMaximized: false,
+
+            zIndex: nextZIndex,
+          }
+        }
+
+
+        return {
+          ...w,
+
+          previousPosition: w.position,
+          previousSize: w.size,
+
+          position: {
+            x: 0,
+            y: 0,
+          },
+
+          size: {
+            width: window.innerWidth,
+            height: window.innerHeight - 40,
+          },
+
+          isMaximized: true,
+
+          zIndex: nextZIndex,
+        }
+      })
     )
 
     setNextZIndex((prev) => prev + 1)
   }
+
 
   const focusWindow = (id: string) => {
     setWindows((prev) =>
       prev.map((w) =>
         w.id === id
           ? {
-              ...w,
-              isMinimized: false,
-              zIndex: nextZIndex,
-            }
+            ...w,
+            isMinimized: false,
+            zIndex: nextZIndex,
+          }
           : w
       )
     )
@@ -140,31 +209,84 @@ export default function Home() {
     setNextZIndex((prev) => prev + 1)
   }
 
+
   const updateWindowPosition = (
     id: string,
-    position: { x: number; y: number }
+    position: {
+      x: number
+      y: number
+    }
   ) => {
     setWindows((prev) =>
       prev.map((w) =>
         w.id === id
-          ? { ...w, position }
+          ? {
+            ...w,
+            position,
+          }
           : w
       )
     )
   }
 
+
   if (booting) {
     return <RetroBootScreen />
   }
 
+
   return (
-    <main className="h-screen w-screen overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-[url('/img/champ.png')] before:bg-cover before:bg-center before:z-[-1] text-white font-mono relative">
+    <main
+      className="
+        h-screen
+        w-screen
+        overflow-hidden
+        text-white
+        font-mono
+        relative
+      "
+    >
 
-      <div className="absolute inset-0 pointer-events-none z-50 bg-[radial-gradient(ellipse_at_center,_rgba(0,0,0,0)_0%,_rgba(0,0,0,0.3)_70%)] mix-blend-overlay" />
+      <div
+        className="
+          absolute
+          inset-[-2%]
+          bg-[url('/img/champ.png')]
+          bg-cover
+          bg-center
+          background-animated
+          z-[-1]
+        "
+      />
 
-      <div className="absolute inset-0 pointer-events-none z-50 bg-[linear-gradient(rgba(18,16,16,0)_40%,_rgba(0,0,0,0.25)_60%)] bg-[length:100%_2px]" />
 
-      <RetroDesktop onOpenWindow={openWindow} />
+      <div
+        className="
+          absolute
+          inset-0
+          pointer-events-none
+          z-50
+          bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0)_0%,rgba(0,0,0,0.3)_70%)]
+          mix-blend-overlay
+        "
+      />
+
+
+      <div
+        className="
+          absolute
+          inset-0
+          pointer-events-none
+          z-50
+          bg-[linear-gradient(rgba(18,16,16,0)_40%,rgba(0,0,0,0.25)_60%)]
+          bg-[length:100%_2px]
+        "
+      />
+
+
+      <RetroDesktop
+        onOpenWindow={openWindow}
+      />
 
       {windows.map(
         (window) =>
@@ -176,7 +298,10 @@ export default function Home() {
               position={window.position}
               size={window.size}
               zIndex={window.zIndex}
-              onClose={() => closeWindow(window.id)}
+              isMaximized={window.isMaximized}
+              onClose={() =>
+                closeWindow(window.id)
+              }
               onMinimize={() =>
                 minimizeWindow(window.id)
               }
@@ -197,6 +322,7 @@ export default function Home() {
             </RetroWindow>
           )
       )}
+
 
       <RetroTaskbar
         windows={windows}

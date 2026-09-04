@@ -23,7 +23,7 @@ export default function RetroStartMenu({ onItemClick, onClose }: RetroStartMenuP
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: 20 }}
     >
-      <div className="p-4 bg-[#8A2BE2] font-bold">Portfolio OS v1.0</div>
+      <div className="p-4 bg-[#8A2BE2] font-bold">Portfolio MimiStack OS v1.0</div>
       <div className="p-2">
         {menuItems.map((item) => (
           <div
@@ -39,7 +39,7 @@ export default function RetroStartMenu({ onItemClick, onClose }: RetroStartMenuP
         <div className="border-t border-[#8A2BE2] mt-2 pt-2">
           <div className="flex items-center gap-3 p-2 hover:bg-[#8A2BE2] cursor-pointer" onClick={onClose}>
             <div className="w-6 h-6 flex items-center justify-center bg-[#FF5555] text-white">X</div>
-            <span>Close</span>
+            <span>Fermer</span>
           </div>
         </div>
       </div>

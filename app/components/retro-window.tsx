@@ -1,7 +1,9 @@
-import type React from "react"
+"use client"
 
+import type React from "react"
 import { useState, useRef, useEffect, type ReactNode } from "react"
-import { X, Minus, Square } from "lucide-react"
+
+import { X, Minus, Square, Copy } from "lucide-react"
 
 interface RetroWindowProps {
   id: string
@@ -10,6 +12,8 @@ interface RetroWindowProps {
   position: { x: number; y: number }
   size: { width: number; height: number }
   zIndex: number
+  isMaximized: boolean
+
   onClose: () => void
   onMinimize: () => void
   onMaximize: () => void
@@ -23,6 +27,7 @@ export default function RetroWindow({
   position,
   size,
   zIndex,
+  isMaximized,
   onClose,
   onMinimize,
   onMaximize,
@@ -31,12 +36,22 @@ export default function RetroWindow({
 }: RetroWindowProps) {
   const [isDragging, setIsDragging] = useState(false)
   const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 })
+
   const windowRef = useRef<HTMLDivElement>(null)
 
+
   const handleMouseDown = (e: React.MouseEvent) => {
+    if (isMaximized) {
+      onFocus()
+      return
+    }
+
     onFocus()
+
     setIsDragging(true)
+
     const rect = windowRef.current?.getBoundingClientRect()
+
     if (rect) {
       setDragOffset({
         x: e.clientX - rect.left,
@@ -45,13 +60,18 @@ export default function RetroWindow({
     }
   }
 
+
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
-      if (isDragging) {
-        const newX = e.clientX - dragOffset.x
-        const newY = e.clientY - dragOffset.y
-        onPositionChange({ x: Math.max(0, newX), y: Math.max(0, newY) })
-      }
+      if (!isDragging) return
+
+      const newX = e.clientX - dragOffset.x
+      const newY = e.clientY - dragOffset.y
+
+      onPositionChange({
+        x: Math.max(0, newX),
+        y: Math.max(0, newY),
+      })
     }
 
     const handleMouseUp = () => {
@@ -69,6 +89,7 @@ export default function RetroWindow({
     }
   }, [isDragging, dragOffset, onPositionChange])
 
+
   return (
     <div
       ref={windowRef}
@@ -82,9 +103,19 @@ export default function RetroWindow({
       }}
       onClick={onFocus}
     >
-      <div className="bg-[#8A2BE2] px-2 py-1 flex items-center cursor-move select-none" onMouseDown={handleMouseDown}>
-        <div className="flex-1 font-bold text-white truncate">{title}</div>
+
+      <div
+        className="bg-[#8A2BE2] px-2 py-1 flex items-center cursor-move select-none"
+        onMouseDown={handleMouseDown}
+      >
+
+        <div className="flex-1 font-bold text-white truncate">
+          {title}
+        </div>
+
+
         <div className="flex gap-1">
+
           <button
             onClick={(e) => {
               e.stopPropagation()
@@ -94,6 +125,8 @@ export default function RetroWindow({
           >
             <Minus size={14} />
           </button>
+
+
           <button
             onClick={(e) => {
               e.stopPropagation()
@@ -101,8 +134,14 @@ export default function RetroWindow({
             }}
             className="w-6 h-6 flex items-center justify-center bg-[#87CEFA] hover:bg-[#77BEFA] text-[#2a0044] border border-[#000]"
           >
-            <Square size={14} />
+            {isMaximized ? (
+              <Copy size={13} />
+            ) : (
+              <Square size={14} />
+            )}
           </button>
+
+
           <button
             onClick={(e) => {
               e.stopPropagation()
@@ -115,8 +154,10 @@ export default function RetroWindow({
         </div>
       </div>
 
-      <div className="flex-1 overflow-auto bg-[#1a0033] text-white">{children}</div>
 
+      <div className="flex-1 overflow-auto bg-[#1a0033] text-white">
+        {children}
+      </div>
     </div>
   )
 }

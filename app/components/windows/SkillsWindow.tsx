@@ -15,7 +15,6 @@ export default function SkillsWindow() {
             "
           >
 
-            {/* Barre de fenêtre */}
             <div
               className="
                 bg-[#000080]
@@ -38,7 +37,6 @@ export default function SkillsWindow() {
             </div>
 
 
-            {/* Contenu fenêtre */}
             <div className="p-3">
 
               <div className="grid grid-cols-2 md:grid-cols-3 gap-3">

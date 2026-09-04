@@ -87,7 +87,7 @@ export const projects: Project[] = [
     //     { role: "Frontend", count: 1 },
     //     { role: "Backend", count: 2 }
     //     ],
-    duration: "🚧 En cours de conception 🚧",
+    duration: "7 mois",
     image: portfolio,
     view: "https://bene-designer.com/",
     code: "https://github.com/yeezynico/portfolio_b-n-dcite",
