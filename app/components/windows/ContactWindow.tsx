@@ -102,7 +102,7 @@ export default function ContactWindow() {
           Besoin de me contacter ?
           <br />
           Que ce soit pour une opportunité, un projet, une mission
-          ou simplement pour échanger, vous pouvez m'envoyer un message ici.
+          ou simplement pour échanger, vous pouvez m&apos;envoyer un message ici.
         </p>
       </div>
 
@@ -110,7 +110,7 @@ export default function ContactWindow() {
       <div className="border-2 border-[#8A2BE2] bg-[#1a0033] px-3 py-2 mb-6 text-xs">
         <span className="text-[#87CEFA]">●</span>{" "}
         <span className="text-[#D8BFD8]">
-          Connexion disponible — vous pouvez m'écrire
+          Connexion disponible — vous pouvez m&apos;écrire
         </span>
       </div>
 
@@ -363,7 +363,7 @@ export default function ContactWindow() {
         </p>
 
         <p className="text-xs text-[#87CEFA] mt-1">
-          Merci d'être passé par ici !
+          Merci d&apos;être passé par ici !
         </p>
 
         <p className="text-[#87CEFA] font-bold mt-4">
