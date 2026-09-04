@@ -16,14 +16,12 @@ export default function CareerWindow() {
       key={index}
       className="relative flex flex-col lg:flex-row items-start gap-4 lg:gap-8 mb-8 lg:mb-10"
     >
-      {/* Date */}
       <div className="relative z-10 flex-shrink-0 w-full lg:w-auto lg:min-w-[90px]">
         <div className="bg-[#000080] border-2 border-[#8A2BE2] text-white text-center px-3 py-2 font-bold text-xs lg:text-sm">
           {step.period}
         </div>
       </div>
 
-      {/* Carte */}
       <div className="w-full flex-1 border-2 border-[#8A2BE2] bg-[#1a0033] shadow-lg hover:-translate-y-1 hover:shadow-[0_0_20px_#8A2BE2] transition-all duration-300">
         <div className="bg-[#000080] text-white flex justify-between items-center px-2 py-1 border-b-2 border-[#8A2BE2]">
           <span className="font-bold text-xs lg:text-sm truncate">
