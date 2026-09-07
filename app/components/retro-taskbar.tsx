@@ -19,7 +19,7 @@ import {
   ExternalLink,
 } from "lucide-react"
 
-import type { WindowState } from "@/app/page"
+import type { WindowState } from "@/app/types/window"
 
 import AboutWindow from "./windows/AboutWindow"
 import ProjectsWindow from "./windows/ProjectsWindow"
