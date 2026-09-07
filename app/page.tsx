@@ -7,39 +7,10 @@ import RetroBootScreen from "./components/retro-boot-screen"
 import RetroDesktop from "./components/retro-desktop"
 import RetroWindow from "./components/retro-window"
 import RetroTaskbar from "./components/retro-taskbar"
+import type { WindowState } from "./types/window"
 
 import "./globals.css"
 
-interface WindowState {
-  id: string
-  title: string
-  content: React.ReactNode
-
-  position: {
-    x: number
-    y: number
-  }
-
-  size: {
-    width: number
-    height: number
-  }
-
-  zIndex: number
-
-  isMinimized: boolean
-  isMaximized: boolean
-
-  previousPosition?: {
-    x: number
-    y: number
-  }
-
-  previousSize?: {
-    width: number
-    height: number
-  }
-}
 
 export default function Home() {
   const [booting, setBooting] = useState(true)
