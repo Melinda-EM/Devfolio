@@ -125,7 +125,9 @@ export default function RetroDesktop({
             "
           >
 
-            <div
+           <button
+              type="button"
+              data-testid={`desktop-icon-${icon.id}`}
               className="
                 flex
                 flex-col
@@ -133,9 +135,13 @@ export default function RetroDesktop({
                 cursor-pointer
                 select-none
                 w-fit
+                bg-transparent
+                border-0
+                p-0
               "
               onClick={() => handleOpenWindow(icon)}
-            >
+           >
+            
 
               <div className="relative h-14 w-24 lg:h-20 lg:w-26">
                 <motion.div
@@ -214,7 +220,7 @@ export default function RetroDesktop({
               >
                 {icon.name}
               </span>
-            </div>
+            </button>
           </motion.div>
         ))}
       </motion.div>

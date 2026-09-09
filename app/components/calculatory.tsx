@@ -15,7 +15,10 @@ export default function Calculatory() {
 
   return (
     <div className="bg-[#1a0033] border-2 border-[#8A2BE2] p-4 max-w-xs mx-auto">
-      <div className="bg-[#000] text-[#87CEFA] p-2 mb-4 text-right text-xl font-mono border border-[#D8BFD8]">
+      <div
+        role="status"
+        className="bg-[#000] text-[#87CEFA] p-2 mb-4 text-right text-xl font-mono border border-[#D8BFD8]"
+      >
         {display}
       </div>
       <div className="grid grid-cols-4 gap-2">
