@@ -22,6 +22,7 @@ interface RetroWindowProps {
 }
 
 export default function RetroWindow({
+  id,
   title,
   children,
   position,
@@ -92,8 +93,9 @@ export default function RetroWindow({
 
   return (
     <div
-      ref={windowRef}
-      className="absolute bg-[#2a0044] border-2 border-[#8A2BE2] shadow-lg flex flex-col"
+        data-testid={`window-${id}`}
+        ref={windowRef}
+        className="absolute bg-[#2a0044] border-2 border-[#8A2BE2] shadow-lg flex flex-col"
       style={{
         left: position.x,
         top: position.y,
@@ -117,6 +119,7 @@ export default function RetroWindow({
         <div className="flex gap-1">
 
           <button
+            aria-label="Minimiser"
             onClick={(e) => {
               e.stopPropagation()
               onMinimize()
@@ -126,8 +129,8 @@ export default function RetroWindow({
             <Minus size={14} />
           </button>
 
-
           <button
+            aria-label={isMaximized ? "Restaurer" : "Maximiser"}
             onClick={(e) => {
               e.stopPropagation()
               onMaximize()
@@ -141,8 +144,8 @@ export default function RetroWindow({
             )}
           </button>
 
-
           <button
+            aria-label="Fermer"
             onClick={(e) => {
               e.stopPropagation()
               onClose()
